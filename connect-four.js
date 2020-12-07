@@ -16,12 +16,12 @@ window.addEventListener("DOMContentLoaded", () => {
     p1Name.addEventListener('keyup', enableDisableNewGame)
     p2Name.addEventListener('keyup', enableDisableNewGame)
 
-    btnNewGame.addEventListener('click', () => {
+    btnNewGame.addEventListener('click', (e) => {
         game = new Game(p1Name.value, p2Name.value)
         btnNewGame.disabled = true
-        updateUI()
+        updateUI(e.target)
     })
-    document.getElementById('#click-targets').addEventListener('click', e => {
+    document.getElementById('click-targets').addEventListener('click', e => {
         game.playInColumn()
         updateUI()
     })
