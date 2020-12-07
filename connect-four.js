@@ -4,10 +4,12 @@ function updateUI(){
     if (game) {
         document.getElementById('board-holder').classList.remove('is-invisible')
         document.getElementById('game-name').innerHTML = game.getName()
-        document.getElementById('click-targets').classList.add(game.curPlayer === 1 ? 'black' : 'red')
-        document.getElementById('click-targets').classList.remove(game.curPlayer === 1 ? 'red' : 'black')
+        document.getElementById('click-targets').classList.add(game.current === 1 ? 'black' : 'red')
+        document.getElementById('click-targets').classList.remove(game.current === 1 ? 'red' : 'black')
 
         for (let i = 6; i >= 0; i--) { //loop through columns
+            const col = document.getElementById(`column-${i}`)
+            game.isColumnFull(i) ? col.classList.add('full') : col.classList.remove('full')
             for (let j = 0; j < 6; j++) { //loop through rows
                 const el = document.createElement('div')
                 el.classList.add('token')
